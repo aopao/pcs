@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    
+    <title>京惠CMS演示站</title>
+    <meta name="keywords" content="京惠">
+    <meta name="description" content="欢迎使用京惠CMS导购系统!">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <script src="/static/js/hm.js"></script><script src="/static/js/hm1.js"></script><script src="/static/js/jquery-1.9.1.js"></script>
+    <script src="/static/js/app.js"></script>
+    <!-- <link rel="shortcut icon" href="http://capi.jingtuitui.com/cms.ico"> -->
+  </head>
+  <body>
+    <div class="fo">
+      <div class="fo_1">
+        <div class="fo_1_1">
+          <span class="left">欢迎您的到来，如果您有任何的建议，请联系管理员 {{.Id}} {{.category.Description}}</span>
+          <span class="right">
+            <span class="span_1">
+              <a href="javascript:void(0)" onclick="SetHome(this,window.location)" title="将本站设为首页">设为首页</a></span>
+            <span class="span_1">
+              <a href="javascript:void(0)" onclick="shoucang(document.title,window.location)" title="加入收藏，方便下次打开">加入收藏</a></span>
+            </span>
+        </div>
+      </div>
+
+      <div class="fo_2">
+        <div class="fo_2_1">
+          <span class="f_shop">
+            <a href="http://demo.jingtuitui.com/?r=index/">
+              <img class="img_1" src="/static/img/8de75201710081936277255.gif" alt=""></a>
+          </span>
+          <div class="search-group">
+
+            <form id="filterForm" name="filterForm" data-pjax="true" class="searchf" style="position:relative">
+              <input class="input_1 kwd index-search-input" type="text" placeholder="请输入您要搜索关键词" name="kw" id="kw" value="">
+              <input class="input_2" type="submit" id="search" value="搜索">
+              <div class="ss-list" id="pop" style="position: absolute;;z-index: 99;width: 384px;top: 42px;left: 0px">
+                <ul>
+                  <p class="H1de">
+                    <a href="http://demo.jingtuitui.com/?r=index/">使用全网搜索
+                      <span class="gjc"></span>商品优惠券&gt;</a></p>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="f_update">
+            <img class="img a" src="/static/img/jdz_2.jpg">
+            <img class="a" src="/static/img/jdz_3.jpg">
+            <img class="a" src="/static/img/jdz_4.jpg"></div>
+        </div>
+      </div>
+      <div class="fo_3">
+        <ul>
+          <li class="li">
+            <a class="f_fixed" href="http://demo.jingtuitui.com/?r=index/">
+              <img src="/static/img/f_clasify.png" alt="全部商品分类">全部商品分类</a></li>
+             
+             <li>
+            <a href="http://demo.jingtuitui.com/?r=sift" class="f_select f_ju">精选好货</a></li>
+                      <li style="position:relative">
+            <a href="http://demo.jingtuitui.com/?r=real">实时上新</a>
+            <span></span>
+          </li>
+          <li>
+            <a href="http://demo.jingtuitui.com/?r=total">全部优惠券</a></li>
+          
+
+          <!----></ul>
+      </div>
+    </div>
+
+    <script src="/static/img/index.js"></script>
+
+
+<script type="text/javascript">
+  $.imgLazyLoad()
+</script>
+
+<div class="footer">
+    <img src="/static/img/word.png" alt="">
+    <br>
+    <div>Copyright 版权所有 京惠CMS演示站      <noempty name="user_setting[&#39;site_no&#39;]">All Rights Reserved.
+        <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备17019584号</a></noempty>
+    </div>
+  </div>
+

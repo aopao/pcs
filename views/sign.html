@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>开通『报考无忧』账户</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="高考报考专业指导平台" />
+	<meta name="keywords" content="高考,报考,高考报考" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="/static/img/favicon.ico">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="/static/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/static/js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body class="style-3">
+		<div class="container" id="signArea">
+			<!--div class="row">
+				<div class="col-md-12 text-center">
+					<ul class="menu">
+						<li class="active"><a href="index.html">Style 1</a></li>
+						<li><a href="index2.html">Style 2</a></li>
+						<li><a href="index3.html">Style 3</a></li>
+					</ul>
+				</div>
+			</div -->
+			<div class="row">
+				<div class="col-md-10 text-center col-md-offset-1">
+					<!-- Start Sign In Form -->
+					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+						<h2>开通『报考无忧』账户</h2>
+						<div class="form-group" v-show="hasError">
+							<div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+						</div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="username" class="sr-only">用户名</label>
+                            <input type="text" class="form-control" id="username" placeholder="用户名（英文或数字）" v-model.trim="username" autocomplete="off">
+                        </div>
+						<div class="col-md-6 form-group">
+							<label for="name" class="sr-only">姓名</label>
+							<input type="text" class="form-control" id="name" placeholder="真实姓名" v-model.trim="name" autocomplete="off">
+						</div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="password" class="sr-only">密码</label>
+                            <input type="password" class="form-control" id="password" placeholder="密码" v-model.trim="password" autocomplete="off">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="re-password" class="sr-only">确认密码</label>
+                            <input type="password" class="form-control" id="re-password" placeholder="确认密码" v-model.trim="password2" autocomplete="off">
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="token" class="sr-only">卡密</label>
+                            <input type="text" class="form-control" id="token" placeholder="卡密（需先行购买）" v-model.trim="token" autocomplete="off">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="tel" class="sr-only">电话</label>
+                            <input type="tel" class="form-control" id="tel" placeholder="电话" v-model.trim="tel" autocomplete="off">
+                        </div>
+
+						<div class="col-md-6 form-group">
+							<label for="email" class="sr-only">邮箱</label>
+							<input type="email" class="form-control" id="email" placeholder="邮箱" v-model.trim="email" autocomplete="off">
+						</div>
+                        <div class="col-md-6 form-group">
+                            <label for="qq" class="sr-only">QQ</label>
+                            <input type="text" class="form-control" id="qq" placeholder="QQ" v-model.trim="qq" autocomplete="off">
+                        </div>
+
+                        <div class="col-md-2 form-group">
+                            <label for="qq" class="sr-only">省</label>
+                            <select class="form-control" id="prov" onchange="showCity(this)" v-model.number="province">
+                                <option value="-1">请选择省</option>
+                                <option v-for="(element, index) in provinces" :value="index">{{element}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="qq" class="sr-only">市</label>
+                            <select class="form-control" id="city" onchange="showCountry(this)" v-model.number="city">
+                                <option value="-1">请选择市</option>
+                                <option v-for="(element, index) in cities" :value="index">{{element}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="qq" class="sr-only">县（区）</label>
+                            <select class="form-control" id="country" placeholder="学校名称" onchange="selectCountry(this)" v-model.number="country">
+                                <option value="-1">请选择区</option>
+                                <option v-for="(element, index) in countries" :value="index">{{element}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="school" class="sr-only">学校名称</label>
+                            <input type="text" class="form-control" id="school" placeholder="学校名称" autocomplete="off" v-model.trim="school">
+                        </div>
+
+						<div class="col-md-6 form-group">
+							<label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
+						</div>
+						<div class="col-md-6 form-group">
+							<p>已经开通? <a href="/login">登录</a></p>
+						</div>
+						<div class="form-group text-center">
+							<input type="button" value="提交开通" class="btn btn-primary" @click="doSubmit">
+						</div>
+					</form>
+					<!-- END Sign In Form -->
+				</div>
+			</div>
+			<div class="row" style="padding-top: 60px; clear: both;">
+				<div class="col-md-12 text-center"><p><small>&copy; All Rights Reserved. 2017-2018 <a href="http://www.uugu.org/" target="_blank" title="UUGU">UUGU</a></small></p></div>
+			</div>
+		</div>
+
+        <script src="/static/js/vue.min.js"></script>
+        <!-- jQuery -->
+        <script src="/static/js/jquery-1.11.3.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="/static/js/bootstrap.min.js"></script>
+        <!-- Placeholder -->
+        <script src="/static/js/jquery.placeholder.min.js"></script>
+        <!-- Waypoints -->
+        <script src="/static/js/jquery.waypoints.min.js"></script>
+        <!-- Sign JS -->
+        <script src="/static/scripts/city.js"></script>
+        <script src="/static/scripts/signup.js"></script>
+
+	</body>
+</html>
+

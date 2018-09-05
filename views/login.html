@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录【报考无忧】系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="高考报考专业指导平台"/>
+    <meta name="keywords" content="高考,报考,高考报考"/>
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:image" content=""/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content=""/>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="/static/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="style-3">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-push-8">
+
+            <!-- Start Sign In Form -->
+            <form action="#" method="post" class="fh5co-form animate-box" data-animate-effect="fadeInRight">
+                <h2>登录系统</h2>
+                <div class="form-group" id="errorDiv" style="display: none">
+                    <div class="alert alert-danger" role="alert" id="errorMessage"></div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="sr-only">用户名</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="用户名"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">密码</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="密码"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
+                </div>
+                <div class="form-group">
+                    <p>未开通账户? <a href="/sign">开通账户</a> | <a href="/sign">忘记密码?</a></p>
+                </div>
+                <div class="form-group text-center">
+                    <input type="button" value="登 录" onclick="doLogin()" class="btn btn-primary">
+                </div>
+            </form>
+            <!-- END Sign In Form -->
+
+        </div>
+    </div>
+    <div class="row" style="padding-top: 60px; clear: both;">
+        <div class="col-md-12 text-center">
+            <p>
+                <small>&copy; All Rights Reserved. 2017-2018 <a href="http://www.uugu.org/" target="_blank" title="UUGU">UUGU</a></small>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="/static/js/jquery-1.11.3.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- Placeholder -->
+<script src="/static/js/jquery.placeholder.min.js"></script>
+<!-- Waypoints -->
+<script src="/static/js/jquery.waypoints.min.js"></script>
+<!-- Main JS -->
+<script>
+    (function () {
+        'use strict';
+
+        // Placeholder
+        var placeholderFunction = function () {
+            $('input, textarea').placeholder({customClass: 'my-placeholder'});
+        };
+
+        // Placeholder
+        var contentWayPoint = function () {
+            var i = 0;
+            $('.animate-box').waypoint(function (direction) {
+
+                if (direction === 'down' && !$(this.element).hasClass('animated-fast')) {
+
+                    i++;
+
+                    $(this.element).addClass('item-animate');
+                    setTimeout(function () {
+
+                        $('body .animate-box.item-animate').each(function (k) {
+                            var el = $(this);
+                            setTimeout(function () {
+                                var effect = el.data('animate-effect');
+                                if (effect === 'fadeIn') {
+                                    el.addClass('fadeIn animated-fast');
+                                } else if (effect === 'fadeInLeft') {
+                                    el.addClass('fadeInLeft animated-fast');
+                                } else if (effect === 'fadeInRight') {
+                                    el.addClass('fadeInRight animated-fast');
+                                } else {
+                                    el.addClass('fadeInUp animated-fast');
+                                }
+
+                                el.removeClass('item-animate');
+                            }, k * 200, 'easeInOutExpo');
+                        });
+
+                    }, 100);
+
+                }
+
+            }, {offset: '85%'});
+        };
+        // On load
+        $(function () {
+            placeholderFunction();
+            contentWayPoint();
+        });
+
+    }());
+
+    var doLogin = function () {
+        $("#errorDiv").hide();
+        $("#errorMessage").html("");
+        if ($("#username").val() === "") {
+            $("#errorMessage").html("用户名不可为空！");
+            $("#errorDiv").show();
+            return;
+        }
+        if ($("#password").val() === "") {
+            $("#errorMessage").html("密码不可为空！");
+            $("#errorDiv").show();
+            return;
+        }
+        $.getJSON('/doLogin', {
+            username: $("#username").val(),
+            password: $("#password").val()
+        }).done(function (response) {
+            if (response.success) {
+                console.log(response);
+                window.location.href = "/index"
+            } else {
+                console.log(response.message);
+                $("#errorMessage").html(response.message);
+                $("#errorDiv").show();
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
+
